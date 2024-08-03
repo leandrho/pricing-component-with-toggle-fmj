@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+:root{
+    --gradient: linear-gradient(to bottom right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    --gradient2: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    --Very-Ligh-Grayish-Blue: hsl(240, 78%, 98%);
+    --Ligh-Grayish-Blue: hsl(234, 14%, 74%);
+    --Grayish-Blue: hsl(233, 13%, 49%);
+    --Dark-Grayish-Blue: hsl(232, 13%, 33%);
+    --text-btn-hight-btn:  hsl(237, 63%, 64%);
+}   
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    background-color: var(--Very-Ligh-Grayish-Blue);
+    background-image: url(./images/bg-top.svg), url(./images/bg-bottom.svg);
+    background-position: top right, bottom left;
+    background-repeat: no-repeat;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    align-items: center;
+    gap: 3.5rem;
+}
+header{
+    margin-top: 4.875rem;
+    text-align: center;
+}
+.title{
+    font-size: 1.75rem;
+    color: var(--Grayish-Blue);
+    margin-bottom: 2rem;
+}
+.main{
+    max-width: 1050px;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+.control-switch{
+    display: flex;
+    align-items: center;
+    color: var(--Ligh-Grayish-Blue);
+    gap: 1rem;
+}
+#switch-pricing{
+    display: none;
+}
+.switch{
+    position: relative;
+    width: 56px;
+    height: 32px;
+    background-image: var(--gradient);
+    border-radius: 999px;
+    cursor: pointer;
+}
+.switch:hover{
+    background-image:  linear-gradient(to right, hsl(237, 43%, 83%), hsl(237, 50%, 74%));
+}
+.switch-thumb{
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform linear 0.2s;
+}
+.control:has(#switch-pricing:checked) .switch-thumb{
+    transform: translate(100%, -50%);
+}
+.cards-container{
+    display: flex;
+    align-items: baseline;
+    margin-inline: 1.5rem;
+}
+.cards-container .card:first-child{
+    border-radius: 10px 0 0 10px;
+}
+.cards-container .card:last-child{
+    border-radius: 0 10px 10px 0;
+}
+.card{
+    flex-grow: 1;
+    background-color: white;
+    color: var(--Grayish-Blue);
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+}
+.card-title{
+    font-size: 18px;
+}
+.card-price{
+    margin-top: 2.3rem;
+    margin-bottom: 2.6rem;
+    color: var(--Dark-Grayish-Blue);
+    font-size: 2.2rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1;
+}
+.card-price span{
+    font-size: 3.5rem;
+}
+.card-info, .card-info p:nth-of-type(2){
+    border-top: 1px solid var(--Ligh-Grayish-Blue);
+    border-bottom: 1px solid var(--Ligh-Grayish-Blue);
+}
+.card-info p{
+    padding: 1rem;
+}
+.card-info{
+    margin-bottom: 2rem;
+}
+.card-btn{
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    color: white;
+    background-image: var(--gradient2);
+    width: 100%;
+    padding: 1rem;
+    cursor: pointer;
+}
+.card-btn:hover{
+    background: transparent;
+    color: var(--text-btn-hight-btn);
+    border: 1px solid var(--text-btn-hight-btn);
+}
+.highlighted{
+    background-image: var(--gradient);
+    --Grayish-Blue: white;
+    --Dark-Grayish-Blue: white;
+    border-radius: 10px;
+    height: 501px;
+    padding-top: 3.5rem;
+}
+.highlighted .card-btn{
+    background: white;
+    color: var(--text-btn-hight-btn);
+}
+.highlighted .card-btn:hover{
+    color: white;
+    border: 1px solid white;
+    background: transparent;
+}
+@keyframes fadeIn {
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+.fade-in{
+    animation: fadeIn 1s forwards;
+}
+
+@media screen and (max-width: 850px){
+    body{
+        background-image: url(./images/bg-top.svg);
+        background-position: right -5vh;
+    }
+    .cards-container{
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem
+    }
+    .card{
+        width: 100%;
+        max-width: 500px;
+    }
+    .cards-container .card:first-child{
+        border-radius: 10px ;
+    }
+    .cards-container .card:last-child{
+        border-radius: 10px;
+    }
+    header{
+        margin-top: 4rem;
+    }
+}
+@media screen and (max-width: 750px){
+    body{
+        background-position: 50vw -5vh;
+    }
+}
